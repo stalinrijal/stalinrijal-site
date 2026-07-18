@@ -1,0 +1,120 @@
+:root {
+  --bg: #080c10;
+  --bg2: #0d1117;
+  --bg3: #131a23;
+  --accent: #00e5a0;
+  --accent2: #00b8ff;
+  --accent3: #ff6b6b;
+  --text: #e2e8f0;
+  --muted: #64748b;
+  --border: #1e2d3d;
+  --glow: 0 0 30px rgba(0, 229, 160, 0.15);
+}
+
+.home,
+.home *,
+.home *::before,
+.home *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.home {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Syne", sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.home .noise-overlay {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+.home .grid-bg {
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(rgba(0, 229, 160, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 160, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 4px;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.home .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 229, 160, 0.3);
+}
+.home .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  padding: 14px 28px;
+  border-radius: 4px;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+.home .btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.home section {
+  position: relative;
+  z-index: 1;
+  padding: 100px 5%;
+}
+.home .section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.home .section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 60px;
+}
+
+.home .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s,
+    transform 0.6s;
+}
+.home .reveal.visible {
+  opacity: 1;
+  transform: none;
+}

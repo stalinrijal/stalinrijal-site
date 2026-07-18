@@ -1,0 +1,100 @@
+.home #experience {
+  background: var(--bg2);
+}
+.home .timeline {
+  position: relative;
+}
+.home .timeline::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+.home .timeline-item {
+  padding-left: 60px;
+  margin-bottom: 50px;
+  position: relative;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideIn 0.5s forwards;
+}
+.home .timeline-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.home .timeline-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.home .timeline-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.home .timeline-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.home .timeline-dot {
+  position: absolute;
+  left: 12px;
+  top: 8px;
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 3px solid var(--bg2);
+  box-shadow: 0 0 12px rgba(0, 229, 160, 0.5);
+}
+.home .tl-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.home .tl-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.home .tl-date {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  color: var(--accent);
+  background: rgba(0, 229, 160, 0.08);
+  border: 1px solid rgba(0, 229, 160, 0.2);
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+.home .tl-company {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8rem;
+  color: var(--accent2);
+  margin-bottom: 12px;
+}
+.home .tl-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.home .tl-bullets li {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  padding-left: 16px;
+  position: relative;
+}
+.home .tl-bullets li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.7rem;
+}
