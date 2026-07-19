@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, Syne } from "next/font/google";
 import "./globals.css";
+import { SITE_NAME, SITE_URL, SITE_DESCRIPTION } from "@/lib/site-config";
 
 const syne = Syne({
   variable: "--font-syne",
@@ -14,10 +15,17 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["300", "400", "500", "700"],
 });
 
+const TITLE = "Stalin Rijal — Cloud · SRE · DevOps Engineer";
+const DESCRIPTION =
+  "Certified DevOps Engineer with 5+ years of experience building, automating, and securing scalable cloud infrastructure.";
+
 export const metadata: Metadata = {
-  title: "Stalin Rijal — Cloud · SRE · DevOps Engineer",
-  description:
-    "Certified DevOps Engineer with 5+ years of experience building, automating, and securing scalable cloud infrastructure.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE,
+    template: `%s — ${SITE_NAME}`,
+  },
+  description: DESCRIPTION,
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -27,6 +35,24 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
+  openGraph: {
+    title: TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    type: "website",
+    images: [{ url: "/photo.jpg" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: SITE_DESCRIPTION,
+    images: ["/photo.jpg"],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#080c10",
 };
 
 export default function RootLayout({

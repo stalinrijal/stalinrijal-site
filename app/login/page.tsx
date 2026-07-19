@@ -9,7 +9,7 @@ export default function LoginPage() {
   const [state, formAction, isPending] = useActionState(signInAction, initialState);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-neutral-950 px-4">
+    <main className="flex min-h-screen items-center justify-center bg-neutral-950 px-4">
       <form
         action={formAction}
         className="w-full max-w-sm space-y-4 rounded-lg border border-neutral-800 bg-neutral-900 p-8"
@@ -48,6 +48,6 @@ export default function LoginPage() {
           {isPending ? "Signing in..." : "Sign in"}
         </button>
       </form>
-    </div>
+    </main>
   );
 }

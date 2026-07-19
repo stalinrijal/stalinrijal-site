@@ -7,7 +7,7 @@ export function SiteHeader() {
         <Link href="/" className="font-semibold text-neutral-100">
           Stalin Rijal
         </Link>
-        <nav className="flex items-center gap-6 text-sm text-neutral-400">
+        <nav aria-label="Primary" className="flex items-center gap-6 text-sm text-neutral-400">
           <Link href="/" className="hover:text-neutral-100">
             Home
           </Link>

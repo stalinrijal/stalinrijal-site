@@ -11,11 +11,14 @@ export function TableOfContents({ headings }: { headings: Heading[] }) {
   if (headings.length === 0) return null;
 
   return (
-    <nav className="sticky top-20 hidden max-h-[calc(100vh-6rem)] overflow-y-auto lg:block">
+    <nav
+      aria-label="Table of contents"
+      className="sticky top-20 hidden max-h-[calc(100vh-6rem)] overflow-y-auto lg:block"
+    >
       <button
         type="button"
         onClick={() => setCollapsed((c) => !c)}
-        className="mb-2 text-xs font-medium uppercase tracking-wide text-neutral-500 hover:text-neutral-300"
+        className="mb-2 text-xs font-medium uppercase tracking-wide text-neutral-400 hover:text-neutral-300"
       >
         On this page {collapsed ? "▸" : "▾"}
       </button>
@@ -29,7 +32,7 @@ export function TableOfContents({ headings }: { headings: Heading[] }) {
                 className={`block border-l-2 py-0.5 pl-3 transition ${
                   activeId === heading.id
                     ? "border-neutral-100 text-neutral-100"
-                    : "border-neutral-800 text-neutral-500 hover:text-neutral-300"
+                    : "border-neutral-800 text-neutral-400 hover:text-neutral-300"
                 }`}
               >
                 {heading.text}

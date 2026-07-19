@@ -32,7 +32,7 @@ export function PostCard({ post }: { post: PostSummary }) {
         )}
         <h3 className="text-lg font-semibold text-neutral-100 group-hover:text-white">{post.title}</h3>
         {post.excerpt && <p className="line-clamp-2 text-sm text-neutral-400">{post.excerpt}</p>}
-        <div className="mt-auto flex items-center gap-3 pt-2 text-xs text-neutral-500">
+        <div className="mt-auto flex items-center gap-3 pt-2 text-xs text-neutral-400">
           {post.published_at && (
             <span>
               {new Date(post.published_at).toLocaleDateString("en-US", {

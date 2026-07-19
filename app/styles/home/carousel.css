@@ -173,18 +173,28 @@
   gap: 8px;
 }
 .home .rec-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+.home .rec-dot::before {
+  content: "";
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: var(--border);
-  cursor: pointer;
   transition:
     background 0.2s,
     transform 0.2s;
-  border: none;
-  padding: 0;
 }
-.home .rec-dot.active {
+.home .rec-dot.active::before {
   background: var(--accent);
   transform: scale(1.3);
 }

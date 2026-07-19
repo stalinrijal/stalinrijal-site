@@ -11,7 +11,7 @@ export function PrevNextNav({ prev, next }: { prev: PostSummary | null; next: Po
           href={`/blogs/${prev.slug}`}
           className="rounded-lg border border-neutral-800 p-4 hover:border-neutral-600"
         >
-          <div className="text-xs text-neutral-500">← Previous</div>
+          <div className="text-xs text-neutral-400">← Previous</div>
           <div className="mt-1 font-medium text-neutral-100">{prev.title}</div>
         </Link>
       ) : (
@@ -22,7 +22,7 @@ export function PrevNextNav({ prev, next }: { prev: PostSummary | null; next: Po
           href={`/blogs/${next.slug}`}
           className="rounded-lg border border-neutral-800 p-4 text-right hover:border-neutral-600"
         >
-          <div className="text-xs text-neutral-500">Next →</div>
+          <div className="text-xs text-neutral-400">Next →</div>
           <div className="mt-1 font-medium text-neutral-100">{next.title}</div>
         </Link>
       ) : (

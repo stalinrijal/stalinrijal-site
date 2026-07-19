@@ -19,15 +19,17 @@ export default function Home() {
     <div className="home">
       <BackgroundLayers />
       <Nav />
-      <Hero />
-      <StatsBar />
-      <Experience />
-      <Skills />
-      <Certifications />
-      <Projects />
-      <BlogMarquee />
-      <Recommendations />
-      <Contact />
+      <main>
+        <Hero />
+        <StatsBar />
+        <Experience />
+        <Skills />
+        <Certifications />
+        <Projects />
+        <BlogMarquee />
+        <Recommendations />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );

@@ -25,15 +25,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return {};
 
   const url = `${SITE_URL}/blogs/${post.slug}`;
-  const title = `${post.title} — ${SITE_NAME}`;
+  const fullTitle = `${post.title} — ${SITE_NAME}`;
   const description = post.excerpt ?? undefined;
 
   return {
-    title,
+    title: post.title,
     description,
     alternates: { canonical: url },
     openGraph: {
-      title,
+      title: fullTitle,
       description,
       url,
       type: "article",
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: fullTitle,
       description,
       images: post.cover_image ? [post.cover_image] : undefined,
     },
@@ -78,7 +78,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <article className="mx-auto max-w-6xl px-6 py-16">
         <div className="mx-auto max-w-3xl">
-          <Link href="/blogs" className="text-sm text-neutral-500 hover:text-neutral-300">
+          <Link href="/blogs" className="text-sm text-neutral-400 hover:text-neutral-300">
             ← Back to blog
           </Link>
 
@@ -92,7 +92,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               </Link>
             )}
             <h1 className="text-3xl font-semibold text-neutral-100 sm:text-4xl">{post.title}</h1>
-            <div className="flex flex-wrap items-center gap-3 text-sm text-neutral-500">
+            <div className="flex flex-wrap items-center gap-3 text-sm text-neutral-400">
               {post.published_at && (
                 <span>
                   {new Date(post.published_at).toLocaleDateString("en-US", {
@@ -110,7 +110,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                   <Link
                     key={tag.id}
                     href={`/blogs?tag=${tag.slug}`}
-                    className="rounded-full border border-neutral-800 px-2.5 py-0.5 text-xs text-neutral-500 hover:border-neutral-600 hover:text-neutral-300"
+                    className="rounded-full border border-neutral-800 px-2.5 py-0.5 text-xs text-neutral-400 hover:border-neutral-600 hover:text-neutral-300"
                   >
                     #{tag.name}
                   </Link>

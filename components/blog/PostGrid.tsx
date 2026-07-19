@@ -3,7 +3,7 @@ import { PostCard } from "./PostCard";
 
 export function PostGrid({ posts }: { posts: PostSummary[] }) {
   if (posts.length === 0) {
-    return <p className="py-16 text-center text-neutral-500">No posts found.</p>;
+    return <p className="py-16 text-center text-neutral-400">No posts found.</p>;
   }
 
   return (

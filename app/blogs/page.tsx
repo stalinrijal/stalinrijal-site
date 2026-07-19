@@ -10,7 +10,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/site-config";
 const DESCRIPTION = "Articles on cloud infrastructure, DevOps, SRE, and platform engineering.";
 
 export const metadata: Metadata = {
-  title: `Blog — ${SITE_NAME}`,
+  title: "Blog",
   description: DESCRIPTION,
   alternates: { canonical: `${SITE_URL}/blogs` },
   openGraph: {
