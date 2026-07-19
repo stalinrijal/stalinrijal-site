@@ -46,26 +46,29 @@ export function MarqueeTrack({ posts }: { posts: PlaceholderPost[] }) {
       onTouchEnd={() => setPaused(false)}
     >
       <div className={`blog-track${paused ? " paused" : ""}`} ref={trackRef}>
-        {doubled.map((post, i) => (
-          <a
-            className="blog-card"
-            href={post.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            key={`${post.title}-${i}`}
-          >
-            <div className="blog-thumb">{post.emoji}</div>
-            <div className="blog-body">
-              <span className="blog-tag">{post.tag}</span>
-              <div className="blog-title">{post.title}</div>
-              <div className="blog-excerpt">{post.excerpt}</div>
-            </div>
-            <div className="blog-footer">
-              <span className="blog-date">{post.date}</span>
-              <span className="blog-arrow">↗</span>
-            </div>
-          </a>
-        ))}
+        {doubled.map((post, i) => {
+          const isInternal = post.url.startsWith("/");
+          return (
+            <a
+              className="blog-card"
+              href={post.url}
+              target={isInternal ? undefined : "_blank"}
+              rel={isInternal ? undefined : "noopener noreferrer"}
+              key={`${post.title}-${i}`}
+            >
+              <div className="blog-thumb">{post.emoji}</div>
+              <div className="blog-body">
+                <span className="blog-tag">{post.tag}</span>
+                <div className="blog-title">{post.title}</div>
+                <div className="blog-excerpt">{post.excerpt}</div>
+              </div>
+              <div className="blog-footer">
+                <span className="blog-date">{post.date}</span>
+                <span className="blog-arrow">{isInternal ? "→" : "↗"}</span>
+              </div>
+            </a>
+          );
+        })}
       </div>
     </div>
   );

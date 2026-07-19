@@ -7,6 +7,32 @@ html {
   scroll-behavior: smooth;
 }
 
+.prose [data-callout] {
+  margin: 1.5em 0;
+  padding: 0.9em 1.1em;
+  border-radius: 0.5rem;
+  border-left: 3px solid;
+}
+
+.prose [data-callout] p {
+  margin: 0;
+}
+
+.prose [data-callout][data-variant="info"] {
+  background-color: color-mix(in srgb, #00b8ff 12%, transparent);
+  border-left-color: #00b8ff;
+}
+
+.prose [data-callout][data-variant="warning"] {
+  background-color: color-mix(in srgb, #f5a623 12%, transparent);
+  border-left-color: #f5a623;
+}
+
+.prose [data-callout][data-variant="tip"] {
+  background-color: color-mix(in srgb, #00e5a0 12%, transparent);
+  border-left-color: #00e5a0;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

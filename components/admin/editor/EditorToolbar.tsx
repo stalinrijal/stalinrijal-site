@@ -62,6 +62,15 @@ export function EditorToolbar({ editor }: { editor: Editor | null }) {
     editor!.chain().focus().setYoutubeVideo({ src: url }).run();
   }
 
+  function handleCodeBlock() {
+    if (editor!.isActive("codeBlock")) {
+      editor!.chain().focus().toggleCodeBlock().run();
+      return;
+    }
+    const language = window.prompt("Language (e.g. typescript, bash, python, yaml)", "typescript");
+    editor!.chain().focus().toggleCodeBlock({ language: language || "" }).run();
+  }
+
   return (
     <div className="flex flex-wrap items-center gap-1 border-b border-neutral-800 p-2">
       <input ref={fileInputRef} type="file" accept="image/*" hidden onChange={handleImagePick} />
@@ -108,7 +117,7 @@ export function EditorToolbar({ editor }: { editor: Editor | null }) {
       <ToolbarButton title="Blockquote" active={editor.isActive("blockquote")} onClick={() => editor.chain().focus().toggleBlockquote().run()}>
         Quote
       </ToolbarButton>
-      <ToolbarButton title="Code block" active={editor.isActive("codeBlock")} onClick={() => editor.chain().focus().toggleCodeBlock().run()}>
+      <ToolbarButton title="Code block" active={editor.isActive("codeBlock")} onClick={handleCodeBlock}>
         Code
       </ToolbarButton>
       <ToolbarButton title="Callout" active={editor.isActive("callout")} onClick={() => editor.chain().focus().toggleCallout({ variant: "info" }).run()}>

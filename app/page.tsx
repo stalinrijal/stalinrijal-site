@@ -12,6 +12,8 @@ import { Recommendations } from "@/components/home/Recommendations";
 import { Contact } from "@/components/home/Contact";
 import { Footer } from "@/components/home/Footer";
 
+export const revalidate = 3600;
+
 export default function Home() {
   return (
     <div className="home">

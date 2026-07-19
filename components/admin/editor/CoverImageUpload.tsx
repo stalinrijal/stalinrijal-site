@@ -46,7 +46,7 @@ export function CoverImageUpload({
         {uploading ? (
           "Uploading..."
         ) : value ? (
-          <Image src={value} alt="Cover" width={640} height={160} className="h-full w-full object-cover" unoptimized />
+          <Image src={value} alt="Cover" width={640} height={160} className="h-full w-full object-cover" />
         ) : (
           "Click or drop an image to set the cover"
         )}
