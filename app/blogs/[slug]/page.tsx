@@ -54,11 +54,22 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   const post = await getPostBySlug(slug);
   if (!post) notFound();
 
-  const [{ html, headings }, { prev, next }, related] = await Promise.all([
-    renderPostContent(post.content),
-    post.published_at ? getAdjacentPosts(post.published_at) : Promise.resolve({ prev: null, next: null }),
-    getRelatedPosts(post.id, post.category?.id ?? null),
-  ]);
+  let html: string, headings: Awaited<ReturnType<typeof renderPostContent>>["headings"];
+  let prev, next, related;
+  try {
+    [{ html, headings }, { prev, next }, related] = await Promise.all([
+      renderPostContent(post.content),
+      post.published_at ? getAdjacentPosts(post.published_at) : Promise.resolve({ prev: null, next: null }),
+      getRelatedPosts(post.id, post.category?.id ?? null),
+    ]);
+  } catch (err) {
+    const message = err instanceof Error ? `${err.message}\n${err.stack}` : String(err);
+    return (
+      <pre style={{ whiteSpace: "pre-wrap", padding: 24, color: "#fff", background: "#111" }}>
+        DEBUG ERROR: {message}
+      </pre>
+    );
+  }
 
   const url = `${SITE_URL}/blogs/${post.slug}`;
   const jsonLd = {
