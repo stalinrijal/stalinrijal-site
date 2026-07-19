@@ -5,7 +5,7 @@ const supabaseHostname = process.env.NEXT_PUBLIC_SUPABASE_URL
   : undefined;
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["jsdom", "shiki"],
+  serverExternalPackages: ["shiki"],
   images: {
     remotePatterns: supabaseHostname
       ? [
